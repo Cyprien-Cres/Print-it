@@ -23,3 +23,13 @@ document.querySelector('.arrow_left').addEventListener ('click', (e) => {
 document.querySelector('.arrow_right').addEventListener ('click', (e) => {
 	alert('Arrow right')
 })
+
+const dots = document.querySelector('.dots')
+const slideCount = slides.length
+
+for (let i = 0; i < slideCount; i++) {
+  const dot = document.createElement("div");
+  dot.classList.add("dot");
+  dots.appendChild(dot);
+}
+dots.children[0].classList.add("dot_selected");
