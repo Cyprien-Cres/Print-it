@@ -30,37 +30,30 @@ for (let i = 0; i < slideCount; i++) {
 }
 
 dots.children[0].classList.add("dot_selected")
-
 document.querySelector('.arrow_right').addEventListener ('click', (e) => {
 	dots.children[selectedIndex].classList.remove("dot_selected")
 	selectedIndex++
+	if (selectedIndex === 4) {
+		selectedIndex = 0;
+	}
 	dots.children[selectedIndex].classList.add("dot_selected")
 	const imageToChange = document.querySelector(".banner-img")
-	if (selectedIndex === 1) {
-		imageToChange.src = "./assets/images/slideshow/slide2.jpg"
-		document.querySelector('#banner p').innerHTML = "Tirages haute définition grand format <span>pour vos bureaux et events</span>"
-	} else if (selectedIndex === 2) {
-		imageToChange.src = "./assets/images/slideshow/slide3.jpg"
-		document.querySelector('#banner p').innerHTML = "Grand choix de couleurs <span>de CMJN aux pantones</span>"
-	} else if (selectedIndex === 3) {
-		imageToChange.src = "./assets/images/slideshow/slide4.png"
-		document.querySelector('#banner p').innerHTML = "Autocollants <span>avec découpe laser sur mesure</span>"
+  if (selectedIndex >= 0 && selectedIndex <= 3) {
+    imageToChange.src = slides[selectedIndex].image;
+    document.querySelector('#banner p').innerHTML = slides[selectedIndex].tagLine;
 	}
 })
 
 document.querySelector('.arrow_left').addEventListener ('click', (e) => {
 	dots.children[selectedIndex].classList.remove("dot_selected")
 	selectedIndex--
+	if (selectedIndex === -1) {
+		selectedIndex = 3;
+	}
 	dots.children[selectedIndex].classList.add("dot_selected")
 	const imageToChange = document.querySelector(".banner-img")
-	if (selectedIndex === 0) {
-		imageToChange.src = "./assets/images/slideshow/slide1.jpg"
-		document.querySelector('#banner p').innerHTML = "Impressions tous formats <span>en boutique et en ligne</span>"
-	} else if (selectedIndex === 1) {
-		imageToChange.src = "./assets/images/slideshow/slide2.jpg"
-		document.querySelector('#banner p').innerHTML = "Tirages haute définition grand format <span>pour vos bureaux et events</span>"
-	} else if (selectedIndex === 2) {
-		imageToChange.src = "./assets/images/slideshow/slide3.jpg"
-		document.querySelector('#banner p').innerHTML = "Grand choix de couleurs <span>de CMJN aux pantones</span>"
+  if (selectedIndex >= 0 && selectedIndex <= 3) {
+    imageToChange.src = slides[selectedIndex].image;
+    document.querySelector('#banner p').innerHTML = slides[selectedIndex].tagLine;
 	}
 })
