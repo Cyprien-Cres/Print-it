@@ -17,8 +17,6 @@ const slides = [
 	}
 ]
 
-https://int-web-cc.atlassian.net/jira/software/projects/IW/boards/1
-
 const bannerP = document.querySelector('#banner p')
 const dots = document.querySelector(".dots")
 const image = document.querySelector(".banner-img")
