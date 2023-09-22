@@ -17,9 +17,9 @@ const slides = [
 	}
 ]
 
-const banner = document.querySelector('#banner')
+const bannerP = document.querySelector('#banner p')
 const dots = document.querySelector(".dots")
-const images = document.querySelectorAll(".banner-img")
+const image = document.querySelector(".banner-img")
 const slideCount = slides.length
 let selectedIndex = 0
 
@@ -29,31 +29,31 @@ for (let i = 0; i < slideCount; i++) {
   dots.appendChild(dot)
 }
 
+const updateSlide = () => {
+	dots.children[selectedIndex].classList.remove("dot_selected")
+	dots.children[selectedIndex].classList.add("dot_selected")
+	image.src = slides[selectedIndex].image
+	bannerP.innerHTML = slides[selectedIndex].tagLine
+}
+
 dots.children[0].classList.add("dot_selected")
+
 document.querySelector('.arrow_right').addEventListener ('click', (e) => {
 	dots.children[selectedIndex].classList.remove("dot_selected")
-	selectedIndex++
-	if (selectedIndex === 4) {
-		selectedIndex = 0;
+	if (selectedIndex === slideCount -1) {
+		selectedIndex = 0
+	} else {
+		selectedIndex++
 	}
-	dots.children[selectedIndex].classList.add("dot_selected")
-	const imageToChange = document.querySelector(".banner-img")
-  if (selectedIndex >= 0 && selectedIndex <= 3) {
-    imageToChange.src = slides[selectedIndex].image;
-    document.querySelector('#banner p').innerHTML = slides[selectedIndex].tagLine;
-	}
+	updateSlide()
 })
 
 document.querySelector('.arrow_left').addEventListener ('click', (e) => {
 	dots.children[selectedIndex].classList.remove("dot_selected")
-	selectedIndex--
-	if (selectedIndex === -1) {
-		selectedIndex = 3;
+	if (selectedIndex === 0) {
+		selectedIndex = slideCount - 1
+	} else {
+		selectedIndex--
 	}
-	dots.children[selectedIndex].classList.add("dot_selected")
-	const imageToChange = document.querySelector(".banner-img")
-  if (selectedIndex >= 0 && selectedIndex <= 3) {
-    imageToChange.src = slides[selectedIndex].image;
-    document.querySelector('#banner p').innerHTML = slides[selectedIndex].tagLine;
-	}
+	updateSlide()
 })
